@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlocked</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fullscreen">
+<div class="container">
+  <div class="typewriter" id="text-container">
+    <p>I will remember to lock my screen, the next time I leave my desk!</p>
+  </div>
+  <div id="fullscreenPrompt" style="text-align: center; margin-top: 2rem;">
+    <button id="enterFullscreen" class="button">Enter Fullscreen</button>
+  </div>
+</div>
+<script>
+    document.getElementById('enterFullscreen').addEventListener('click', () => {
+        const docEl = document.documentElement;
+        if (docEl.requestFullscreen) {
+            docEl.requestFullscreen();
+        } else if (docEl.webkitRequestFullscreen) { // Safari
+            docEl.webkitRequestFullscreen();
+        } else if (docEl.mozRequestFullScreen) { // Firefox
+            docEl.mozRequestFullScreen();
+        } else if (docEl.msRequestFullscreen) { // IE/Edge
+            docEl.msRequestFullscreen();
+        }
+        document.getElementById('fullscreenPrompt').style.display = 'none';
+    });
+    setInterval(()=>{
+        const typewriter = document.getElementById("text-container");
+        typewriter.innerHTML = "<p>I will remember to lock my screen, the next time I leave my desk!</p>";
+    }, 5000)
+</script>
+</body>
+</html>
